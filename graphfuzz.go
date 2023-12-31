@@ -114,8 +114,7 @@ func fuzzGraphQL(url string, types []GraphQLType, wordlist []string) {
 }
 
 func sendQuery(url, query string) (*GraphQLResponse, error) {
-	// Construct the request body with the query
-	requestBody, err := json.Marshal(GraphQLRequest{Query: query})
+		requestBody, err := json.Marshal(GraphQLRequest{Query: query})
 	if err != nil {
 		return nil, fmt.Errorf("error marshaling request: %w", err)
 	}
@@ -127,7 +126,7 @@ func sendQuery(url, query string) (*GraphQLResponse, error) {
 	}
 	defer resp.Body.Close()
 
-	// Read and parse the response body
+	
 	responseBody, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
